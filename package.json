@@ -2,6 +2,10 @@
   "name": "luca",
   "version": "0.1.0",
   "description": "# Getting started ...",
+  "workspaces": [
+    "api/",
+    "client/"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
