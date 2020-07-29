@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useForm } from "react-hook-form";
+import "./App.css";
 
 function App() {
+  const { handleSubmit, register, errors } = useForm();
+  const onSubmit = (values) => console.log(values); // handleSubmit wrapper means this doesn't get called if there are errors.
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="question">
+        <label htmlFor="email">Email</label>
+        <input
+          type="text"
+          name="email"
+          ref={register({
+            required: true,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address",
+            },
+          })}
+        />
+        {errors.email && errors.email.message}
+      </div>
+
+      <div className="question">
+        <label htmlFor="password">Password</label>
+        <input
+          type="text"
+          name="password"
+          ref={register()}
+        />
+        {errors.password && errors.password.message}
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
