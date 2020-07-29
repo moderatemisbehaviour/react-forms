@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "client/",
+			"problemMatcher": [],
+			"label": "Start API",
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "client/",
+			"problemMatcher": [],
+			"label": "start React app",
+			"detail": "react-scripts start"
+		},
+		{
+			"label": "Dev",
+			"type": "shell",
+			"dependsOn": [
+				"Start Docker containers",
+				"Start React app"
+			],
+			"problemMatcher": [],
+			"detail": "Start development environment"
+		}
+	]
+}
