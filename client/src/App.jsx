@@ -3,6 +3,7 @@ import "./App.css";
 import DynamicForm from "./react-hook-form/DynamicForm";
 import FormWithHtmlValidation from "./react-hook-form/FormWithHtmlValidation";
 import FormWithReactValidation from "./react-hook-form/FormWithReactValidation";
+import FormikFormWithReactValidation from './formik/FormWithReactValidation';
 import UncontrolledForm from "./uncontrolled/UncontrolledForm";
 
 function App() {
@@ -17,10 +18,15 @@ function App() {
         <br />
         <em>using React Hook Form</em>
       </button>
-      <button onClick={(_) => setFormtype("reactValidation")}>
+      <button onClick={(_) => setFormtype("hookReactValidation")}>
         Form with React validation
         <br />
         <em>using React Hook Form</em>
+      </button>
+      <button onClick={(_) => setFormtype("formikReactValidation")}>
+        Form with React validation
+        <br />
+        <em>using Formik</em>
       </button>
       <button onClick={(_) => setFormtype("dynamic")}>
         Dynamic
@@ -35,8 +41,10 @@ function App() {
 
       {formType === "htmlValidation" ? (
         <FormWithHtmlValidation />
-      ) : formType === "reactValidation" ? (
+      ) : formType === "hookReactValidation" ? (
         <FormWithReactValidation />
+      ) : formType === "formikReactValidation" ? (
+        <FormikFormWithReactValidation />
       ) : formType === "dynamic" ? (
         <DynamicForm
           inputs={[

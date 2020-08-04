@@ -1,6 +1,6 @@
 import React from "react";
 
-function Input(props) {
+function Question(props) {
   return (
     <div className="input">
       <label htmlFor={props.id}>{props.text || toTitleCase(props.id)}</label>
@@ -8,11 +8,14 @@ function Input(props) {
       <input
         disabled={props.disabled}
         name={props.id}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
         ref={props.inputRef}
         type={props.type || "text"}
+        value={props.value}
       />
       <br />
-      {props.error && <span>{props.error.message}</span>}
+      {props.error && <span>{props.error}</span>}
     </div>
   );
 }
@@ -23,4 +26,4 @@ function toTitleCase(str) {
   });
 }
 
-export default Input;
+export default Question;
